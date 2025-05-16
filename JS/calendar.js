@@ -11,6 +11,10 @@ export function getCurrentDate() {
     return currentDate;
 }
 
+function getCategories() {
+    return JSON.parse(localStorage.getItem('categories')) || [];
+}
+
 
 function getTasks() {
     return JSON.parse(localStorage.getItem('tasks')) || [];
@@ -84,6 +88,7 @@ export function renderCalendar(date) {
 
             // 📌 Tareas del día
             const dayTasks = tasks.filter(t => t.date === dateStr);
+            const categories = getCategories();
             dayTasks.forEach(t => {
                 const taskDiv = document.createElement('div');
                 taskDiv.classList.add('task-item-calendar');
@@ -93,8 +98,14 @@ export function renderCalendar(date) {
                 nameEl.classList.add('task-name')
 
                 const categoryEl = document.createElement('div');
-                categoryEl.textContent = '#' + t.category;
-                categoryEl.classList.add('task-category');
+
+                //buscar categoria por su id
+                const category = categories.find(cat => cat.id === t.category);
+                if (category) {
+                    categoryEl.textContent = '#' + category.name;
+                    categoryEl.classList.add('task-category');
+                    categoryEl.style.color = category.color;
+                }
 
                 taskDiv.appendChild(nameEl);
                 taskDiv.appendChild(categoryEl);
