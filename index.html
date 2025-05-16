@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/sidebar.css" />
+    <link rel="stylesheet" href="styles/task-section.css" />
+    <link rel="stylesheet" href="styles/task-item.css" />
+    <link rel="stylesheet" href="styles/calendar.css" />
+    <title>TareasAPP</title>
+</head>
+<body class="theme-light">
+
+    <header class="header">
+        <h1>TareasAPP</h1>
+        <div>
+        <a href="#">Tareas</a>
+        <a href="#">Proyectos</a>
+        </div>
+        <button id="theme-btn">🌙 Modo Oscuro</button>
+    </header>
+
+    <section class="layout">
+   
+        <aside class="sidebar" id="sidebar">
+            <div class="view-toggle">
+                <button class="view-btn active">Lista</button>
+                <button class="view-btn">Calendario</button>
+            </div>
+            <ul class="category-list">
+                <!-- Las categorías se insertarán aquí -->
+            </ul>
+            <form id="category-form" class="nueva-categoria">
+                <input type="text" placeholder="Nueva categoría" required />
+                <input type="color"/>
+                <button type="submit" class="add-category-btn">+</button>
+            </form>
+        </aside>
+
+        <section class="tasks-section">
+            <div class="task-tabs">
+                <button class="tab-button active">Pendientes</button>
+                <button class="tab-button">Completas</button>
+            </div>
+
+            <button id="newTask-btn" class="newTask-btn">Nueva tarea</button>
+
+            <div id="task-list" class="task-list"></div>
+            <div id="completed-task-list" class="task-list"></div>
+        </section>
+
+        <section id="calendar-section" style="display: none;">
+            <div class="calendar-nav">
+                <button id="prev-month">←</button>
+                <h2 id="calendar-title"></h2>
+                <button id="next-month">→</button>
+            </div>
+
+            <div class="calendar-weekdays">
+                <div>Lun</div>
+                <div>Mar</div>
+                <div>Mié</div>
+                <div>Jue</div>
+                <div>Vie</div>
+                <div>Sáb</div>
+                <div>Dom</div>
+            </div>
+
+            <div class="calendar-grid"></div>
+        </section>
+
+    </section>
+
+    <!-- Scripts -->
+    <script type="module" src="JS/tasks.js"></script>
+    <script type="module" src="JS/task-item.js"></script>
+    <script type="module" src="JS/categories.js"></script>
+    <script type="module" src="JS/theme.js"></script>
+    <script type="module" src="JS/calendar.js"></script>
+</body>
+</html>

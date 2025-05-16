@@ -1,0 +1,156 @@
+body.theme-light {
+    --bg-color: #ffffff;
+    --text-color: #333;
+    --task-bg: #ececec;
+    --border-color: #d4d4d4;
+    --button-bg: #007bff;
+    --button-hover: #0056b3;
+    --modal-bg: #ffffff;
+    --modal-text: #333;
+    --sidebar-btn-hover: #c2c2c2;
+}
+
+body.theme-dark {
+    --bg-color: #181818;
+    --text-color: #f5f5f5;
+    --task-bg: #444;
+    --border-color: #555;
+    --button-bg: #007bff;
+    --button-hover: #0056b3;
+    --modal-bg: #222;
+    --modal-text: #f5f5f5;
+    --sidebar-btn-hover: #646464;
+}
+
+
+.tasks-section {
+    width: 100%;
+    padding: 0.5rem 2rem;
+}
+
+.task-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.task-tabs .tab-button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0;
+    border-bottom: transparent solid 2px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+    color: var(--text-color);
+    background: none;
+}
+
+.task-tabs .tab-button:hover,
+.task-tabs .tab-button.active {
+    border-bottom: var(--text-color) solid 2px;
+}
+
+.newTask-btn {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newTask-btn:hover {
+    background-color: var(--button-hover);
+}
+
+.task-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* Contenedor del modal */
+.modal-content {
+    background: var(--modal-bg);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 25rem;
+    max-width: 90%;
+    color: var(--modal-text);
+}
+
+#task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar el modal cuando no se necesite */
+.hidden {
+    display: none;
+}
+
+/* Estilos para los inputs */
+.modal-content input,
+.modal-content textarea {
+   
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.3rem;
+    background: var(--task-bg);
+    color: var(--text-color);
+    resize: vertical;
+}
+
+/* Espaciado en los botones */
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+/* Estilo de botones */
+.modal-buttons button {
+    flex: 1;
+    padding: 0.5rem;
+    margin: 0 0.3rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: var(--button-bg);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.modal-buttons button:hover {
+    background-color: var(--button-hover);
+}
+
+#completed-task-list {
+    display: none;
+}
+
+.completed-task {
+    opacity: 0.6;
+}
+
+.completed-task .complete-btn {
+    color: green;
+}
+
+.completed-task strong {
+    text-decoration: line-through;
+}
