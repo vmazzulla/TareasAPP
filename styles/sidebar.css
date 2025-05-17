@@ -155,3 +155,27 @@ body.theme-dark {
     font-weight: 600;
 }
 
+/* Oculta el sidebar cuando tenga la clase .sidebar-hidden */
+#sidebar.sidebar-hidden {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  width: 0;
+  overflow: hidden;
+  display: none;
+}
+
+/* Solo aplica este efecto en pantallas pequeñas */
+@media (max-width: 768px) {
+  .sidebar {
+    position: absolute;
+    height: calc(100vh - 3.5rem);
+    z-index: 10;
+    width: 250px;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .layout {
+    position: relative;
+  }
+}
