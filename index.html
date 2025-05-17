@@ -13,8 +13,11 @@
 <body class="theme-light">
 
     <header class="header">
-        <h1>TareasAPP</h1>
-        <div>
+        <div class="menu-h1">
+            <button>☰</button>
+            <h1>TareasAPP</h1>
+        </div>
+        <div class="tareas-proyectos">
         <a href="#">Tareas</a>
         <a href="#">Proyectos</a>
         </div>
@@ -32,8 +35,10 @@
                 <!-- Las categorías se insertarán aquí -->
             </ul>
             <form id="category-form" class="nueva-categoria">
-                <input type="text" placeholder="Nueva categoría" required />
-                <input type="color"/>
+                <div class="category-input-div">
+                    <input type="text" placeholder="Nueva categoría" required />
+                    <input id="category-color-input" type="color"/>
+                </div>
                 <button type="submit" class="add-category-btn">+</button>
             </form>
         </aside>
