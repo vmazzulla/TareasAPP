@@ -146,3 +146,19 @@ body.theme-dark {
     width: 100%;
     color: var(--text-color);
 }
+
+#current-week-section .empty-message {
+    color: #888;
+    font-size: 1rem;
+    font-style: italic;
+    text-align: center;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#current-week-section p.empty-message {
+    opacity: 1;
+    transform: translateY(0);
+}

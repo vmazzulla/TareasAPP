@@ -52,7 +52,10 @@ export function renderizarSemanaActual() {
     const listaMiniTareas = document.getElementById("minitasks-week");
     const listaMiniTareasCompletas = document.getElementById("completed-minitasks-week");
 
-    listaTareas.innerHTML = tareasSemana.map(tarea => `<li>${tarea.name} - Vence el ${tarea.date}</li>`).join("");
+    listaTareas.innerHTML = tareasSemana.length > 0 
+        ? tareasSemana.map(tarea => `<li>${tarea.name} - Vence el ${tarea.date}</li>`).join("")
+        : `<p class="empty-message">No hay tareas programadas para esta semana</p>`;
+
     listaMiniTareas.innerHTML = miniTareas.map(tarea =>
         `<li><div>
             <input type="checkbox" onclick="completarMiniTarea('${tarea.id}')" />
@@ -60,6 +63,7 @@ export function renderizarSemanaActual() {
             <button class="delete-minitask-btn" onclick="eliminarMiniTarea('${tarea.id}')">x</button>
         </li>`
     ).join("");
+
     listaMiniTareasCompletas.innerHTML = miniTareasCompletadas.map(tarea =>
         `<li>
             <div>
