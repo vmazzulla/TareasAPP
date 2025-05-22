@@ -48,9 +48,14 @@ body.theme-dark {
     align-items: center;
 }
 
-#minitasks-week li div {
+#minitasks-week li div, #completed-minitasks-week li div {
     display: flex;
     align-items: center;
+}
+
+#completed-minitasks-week {
+    color: var(--border-color);
+    text-decoration: line-through;
 }
 
 #minitasks-week li:hover, #completed-minitasks-week li:hover {
@@ -95,9 +100,27 @@ body.theme-dark {
     cursor: pointer;
 }
 
-#complete-minitask-btn {
+#current-week-section input[type="checkbox"] {
     margin-right: 0.5rem;
+    appearance: none; /* Oculta el checkbox */
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--text-color);
+    border-radius: 4px;
+    cursor: pointer;
 }
+
+#current-week-section input[type="checkbox"]:checked {
+    margin-right: 0.5rem;
+    appearance: none; /* Oculta el checkbox */
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--border-color);
+    background-color: var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 
 #principaltasks-week {
     padding: 1rem;
@@ -113,4 +136,13 @@ body.theme-dark {
     width: fit-content;
     margin-bottom: 1rem;
     border-bottom: var(--text-color) solid 1px;
+}
+
+.edit-minitask {
+    border: none;
+    outline: none;
+    font-size: inherit;
+    background: transparent;
+    width: 100%;
+    color: var(--text-color);
 }

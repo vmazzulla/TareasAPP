@@ -55,13 +55,19 @@ export function renderizarSemanaActual() {
     listaTareas.innerHTML = tareasSemana.map(tarea => `<li>${tarea.name} - Vence el ${tarea.date}</li>`).join("");
     listaMiniTareas.innerHTML = miniTareas.map(tarea =>
         `<li><div>
-            <button id="complete-minitask-btn" onclick="completarMiniTarea('${tarea.id}')">▢</button>
-            ${tarea.name}</div>
+            <input type="checkbox" onclick="completarMiniTarea('${tarea.id}')" />
+            <span ondblclick="editarMiniTarea('${tarea.id}', this)">${tarea.name}</span></div>
             <button class="delete-minitask-btn" onclick="eliminarMiniTarea('${tarea.id}')">x</button>
         </li>`
     ).join("");
     listaMiniTareasCompletas.innerHTML = miniTareasCompletadas.map(tarea =>
-        `<li>${tarea.name} <button class="delete-minitask-btn" onclick="eliminarMiniTarea('${tarea.id}')">x</button></li>`).join("");
+        `<li>
+            <div>
+                <input type="checkbox" checked onclick="desmarcarMiniTarea('${tarea.id}')" />
+                <span ondblclick="editarMiniTarea('${tarea.id}', this)">${tarea.name}</span>
+            </div>
+            <button class="delete-minitask-btn" onclick="eliminarMiniTarea('${tarea.id}')">x</button>
+        </li>`).join("");
 }
 
 function agregarMiniTarea(nombre) {
@@ -119,6 +125,47 @@ window.eliminarMiniTarea = function eliminarMiniTarea(id) {
     renderizarSemanaActual();
 }
 
+window.editarMiniTarea = function editarMiniTarea(id, elemento) {
+    const miniTareas = JSON.parse(localStorage.getItem("minitasks")) || [];
+    const tarea = miniTareas.find(t => t.id === id);
+    if (!tarea) return;
+
+    // Crear input para editar
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = tarea.name;
+    input.classList.add("edit-minitask");
+
+    // Guardar cambios al salir del input
+    input.addEventListener("blur", () => {
+        tarea.name = input.value.trim() || tarea.name; // Evitar nombres vacíos
+        localStorage.setItem("minitasks", JSON.stringify(miniTareas));
+        renderizarSemanaActual();
+    });
+
+    // Reemplazar el `span` por el `input`
+    elemento.replaceWith(input);
+    input.focus();
+}
+
+window.desmarcarMiniTarea = function desmarcarMiniTarea(id) {
+    let miniTareas = JSON.parse(localStorage.getItem("minitasks")) || [];
+    let miniTareasCompletadas = JSON.parse(localStorage.getItem("completed-minitasks")) || [];
+
+    const tareaDesmarcada = miniTareasCompletadas.find(tarea => tarea.id === id);
+    if (!tareaDesmarcada) return;
+
+    miniTareasCompletadas = miniTareasCompletadas.filter(tarea => tarea.id !== id);
+    miniTareas.push(tareaDesmarcada);
+
+    localStorage.setItem("minitasks", JSON.stringify(miniTareas));
+    localStorage.setItem("completed-minitasks", JSON.stringify(miniTareasCompletadas));
+
+    renderizarSemanaActual();
+};
+
+
+
 document.getElementById("miniTask-form").addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -135,13 +182,6 @@ document.getElementById("miniTask-name").addEventListener("keypress", (e) => {
         document.getElementById("miniTask-form").requestSubmit();
     }
 });
-
-
-
-//cambiar a vista de Semana actual
-
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
