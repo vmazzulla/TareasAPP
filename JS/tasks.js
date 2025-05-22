@@ -1,4 +1,7 @@
+//tasks.js
+
 import { getCurrentDate, renderCalendar } from './calendar.js';
+import { renderizarSemanaActual } from './current-week.js';
 
 const currentDate = getCurrentDate();
 let editingTaskId = null;
@@ -239,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabButtons = document.querySelectorAll('.tab-button');
   const taskList = document.getElementById('task-list');
   const completedList = document.getElementById('completed-task-list');
-  const viewButtons = document.querySelectorAll('.view-btn');
+  const viewButtons = document.querySelectorAll('.cal-list');
   const tasksSection = document.querySelector('.tasks-section');
   const calendarSection = document.getElementById('calendar-section');
   
@@ -259,21 +262,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
-  // Cambio de vista (Lista/Calendario)
-  viewButtons.forEach((btn, idx) => {
-    btn.addEventListener('click', () => {
-      viewButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      
-      if (idx === 0) {
-        tasksSection.style.display = 'block';
-        calendarSection.style.display = 'none';
-      } else {
-        tasksSection.style.display = 'none';
-        calendarSection.style.display = 'block';
-      }
-    });
+  // Cambio de vista (Lista / Calendario / Semana actual)
+  document.querySelectorAll(".view-btn.cal-list").forEach((btn, idx) => {
+      btn.addEventListener("click", () => {
+          const tasksSection = document.querySelector(".tasks-section");
+          const calendarSection = document.getElementById("calendar-section");
+          const semanaActualSection = document.getElementById("current-week-section");
+
+          // Ocultar todas las vistas antes de activar la correcta
+          tasksSection.style.display = "none";
+          calendarSection.style.display = "none";
+          semanaActualSection.style.display = "none"; // Oculta semana actual al cambiar de vista
+
+          if (idx === 0) {
+              tasksSection.style.display = "block"; // Mostrar Lista
+          } else {
+              calendarSection.style.display = "block"; // Mostrar Calendario
+          }
+      });
   });
+
+  document.getElementById("current-week-btn").addEventListener("click", () => {
+      const semanaActualSection = document.getElementById("current-week-section");
+      const tasksSection = document.querySelector(".tasks-section");
+      const calendarSection = document.getElementById("calendar-section");
+
+      // Ocultar otras vistas
+      tasksSection.style.display = "none";
+      calendarSection.style.display = "none";
+
+      // Alternar la visibilidad de la sección Semana Actual
+      if (semanaActualSection.style.display === "none" || !semanaActualSection.style.display) {
+          semanaActualSection.style.display = "flex";
+          renderizarSemanaActual(); // Asegura que se actualicen las mini-tareas y tareas semanales
+      } else {
+          semanaActualSection.style.display = "none";
+          tasksSection.style.display = "block"; // Volver a mostrar la vista de tareas por defecto
+      }
+  });
+
   
   // Vista inicial
   tasksSection.style.display = 'block';

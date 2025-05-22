@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/task-section.css" />
     <link rel="stylesheet" href="styles/task-item.css" />
     <link rel="stylesheet" href="styles/calendar.css" />
+    <link rel="stylesheet" href="styles/current-week.css">
     <title>TareasAPP</title>
 </head>
 <body class="theme-light">
@@ -27,20 +28,23 @@
     <section class="layout">
    
         <aside class="sidebar" id="sidebar">
-            <div class="view-toggle">
-                <button class="view-btn active">Lista</button>
-                <button class="view-btn">Calendario</button>
-            </div>
-            <ul class="category-list">
-                <!-- Las categorías se insertarán aquí -->
-            </ul>
-            <form id="category-form" class="nueva-categoria">
-                <div class="category-input-div">
-                    <input type="text" placeholder="Nueva categoría" required />
-                    <input id="category-color-input" type="color"/>
+            <div>
+                <div class="view-toggle">
+                    <button class="view-btn cal-list active">Lista</button>
+                    <button class="view-btn cal-list">Calendario</button>
                 </div>
-                <button type="submit" class="add-category-btn">+</button>
-            </form>
+                <ul class="category-list">
+                    <!-- Las categorías se insertarán aquí -->
+                </ul>
+                <form id="category-form" class="nueva-categoria">
+                    <div class="category-input-div">
+                        <input type="text" placeholder="Nueva categoría" required />
+                        <input id="category-color-input" type="color"/>
+                    </div>
+                    <button type="submit" class="add-category-btn">+</button>
+                </form>
+            </div>
+            <button class="view-btn" id="current-week-btn">Semana actual</button>
         </aside>
 
         <section class="tasks-section">
@@ -75,6 +79,23 @@
             <div class="calendar-grid"></div>
         </section>
 
+        <section id="current-week-section" style="display: none;">
+            <div id="minitasks-div">
+                <h2>Para esta semana</h2>
+                <ul id="minitasks-week"></ul>
+                <!-- Formulario para nueva mini-tarea -->
+                <form id="miniTask-form">
+                    <button type="submit">+</button>
+                    <input type="text" id="miniTask-name" placeholder="Nuevo elemento" required/>
+                </form>
+                <ul id="completed-minitasks-week"></ul>
+            </div>
+            <div id="principaltasks-week">
+                <h2>Tareas programadas</h2>
+                <ul id="principaltasks-week-list"></ul>
+            </div>
+        </section>
+
     </section>
 
     <!-- Scripts -->
@@ -84,5 +105,6 @@
     <script type="module" src="JS/theme.js"></script>
     <script type="module" src="JS/calendar.js"></script>
     <script type="module" src="JS/sidebar.js"></script>
+    <script type="module" src="JS/current-week.js"></script>
 </body>
 </html>

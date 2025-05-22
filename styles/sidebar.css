@@ -30,9 +30,13 @@ body.theme-dark {
     padding: 1rem;
     border-right: 1px solid var(--border-color);
     background-color: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .view-toggle {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     padding-bottom: 1rem;
@@ -41,11 +45,13 @@ body.theme-dark {
 }
 
 .view-btn {
+    box-sizing: border-box;
+    width: 100%;
     background-color: var(--button-bg);
     border: none;
     border-radius: 0.4rem;
-    margin: 0.2rem;
-    padding: 0.3rem;
+    margin: 0.2rem 0;
+    padding: 0.3rem 0;
     color: white;
     cursor: pointer;
     transition: 0.3s;
@@ -112,6 +118,7 @@ body.theme-dark {
 .category-input-div {
     display: flex;
     gap: 0.2rem;
+    width: 100%;
 }
 
 #category-color-input {
