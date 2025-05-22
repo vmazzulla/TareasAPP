@@ -25,7 +25,7 @@ body.theme-dark {
 }
 
 .sidebar {
-    width: 15%;
+    width: 15rem;
     min-width: 7rem;
     padding: 1rem;
     border-right: 1px solid var(--border-color);
