@@ -82,7 +82,8 @@ body.theme-dark {
     font-size: 0.9rem;
     position: relative;
     border: 1px solid var(--border-color);
-    overflow: hidden; /* Asegura que las celdas no crezcan más allá de su tamaño predeterminado */
+    overflow: hidden;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .today {

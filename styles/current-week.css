@@ -132,6 +132,7 @@ body.theme-dark {
     height: fit-content;
     list-style-position: inside;
     background-color: var(--sidebar-bg);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 #current-week-section h2 {
