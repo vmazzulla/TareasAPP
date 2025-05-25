@@ -29,6 +29,7 @@ body.theme-dark {
     width: 100%;
     padding: 2rem;
     justify-content: space-between;
+    gap: 1rem;
     color: var(--text-color);
 }
 
