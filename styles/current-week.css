@@ -32,7 +32,12 @@ body.theme-dark {
     color: var(--text-color);
 }
 
-#minitasks-div, #principaltasks-week {
+#minitasks-div{
+    max-width: 30rem;
+    width: 100%;
+}
+
+#principaltasks-week {
     max-width: 20rem;
     width: 100%;
 }
@@ -47,12 +52,12 @@ body.theme-dark {
     justify-content: space-between;
     width: 100%;
     padding: 0.5rem 0;
-    align-items: center;
+    align-items: start;
 }
 
 #minitasks-week li div, #completed-minitasks-week li div {
     display: flex;
-    align-items: center;
+    align-items: start;
 }
 
 #completed-minitasks-week {
@@ -63,6 +68,13 @@ body.theme-dark {
 #minitasks-week li:hover, #completed-minitasks-week li:hover {
     .delete-minitask-btn {
         opacity: 1;
+        background-color: var(--sidebar-btn-hover);
+        border-radius: 0.2rem;
+        width: 1rem;
+        min-width: 1rem;
+        height: 1rem;
+        min-height: 1rem;
+        line-height: 0;
     }
 }
 
@@ -104,8 +116,10 @@ body.theme-dark {
 
 #current-week-section input[type="checkbox"] {
     margin-right: 0.5rem;
+    margin-top: 0.2rem;
     appearance: none; /* Oculta el checkbox */
     width: 1rem;
+    min-width: 1rem;
     height: 1rem;
     border: 2px solid var(--text-color);
     border-radius: 4px;
