@@ -8,7 +8,7 @@ body.theme-light {
     --modal-bg: #ffffff;
     --modal-text: #333;
     --sidebar-btn-hover: #c2c2c2;
-    --sidebar-bg:#f8f8f8;
+    --sidebar-bg:#f0f0f0;
 }
 
 body.theme-dark {
@@ -27,17 +27,19 @@ body.theme-dark {
 .sidebar {
     width: 13rem;
     min-width: 13rem;
-    height: calc(100vh - 5rem);
+    height: calc(100vh - 7rem);
     padding: 1rem;
-    border-right: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    border: var(--border-color) solid 1px;
     background-color: var(--sidebar-bg);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 9999;
     position: fixed;
-    top: 3.5rem;
-    left: 0;
+    top: 4rem;
+    left: 0.5rem;
 }
 
 .view-toggle {

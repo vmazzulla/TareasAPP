@@ -36,8 +36,9 @@ body {
 
 .header {
     box-sizing: border-box;
-    background-color: var(--button-bg);
-    color: white;
+    background-color: var(--sidebar-bg);
+    color: var(--button-bg);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,7 +57,7 @@ body {
 
 .header a {
     text-decoration: none;
-    color: white;
+    color: var(--button-bg);
     padding: 0.4rem 0.6rem;
     border-radius: 0.5rem;
     transition: 0.3s;
@@ -71,7 +72,7 @@ body {
     border: none;
     background: none;
     text-decoration: none;
-    color: white;
+    color: var(--text-color);
     border-radius: 0.5rem;
     transition: 0.3s;
 }
@@ -84,7 +85,7 @@ body {
     display: flex;
     min-height: calc(100vh - 3.5rem);
     margin-top: 3.5rem;
-    margin-left: 15rem;
+    margin-left: 16rem;
     transition: 0.3s;
 }
 
@@ -108,4 +109,5 @@ body {
     height: 2.3rem;
     padding: 0.3rem;
     font-size: 1.2rem;
+    color: var(--button-bg);
 }
